@@ -1,2 +1,1 @@
-# Sistem-Informasi-Geografi-2018
-Tugas Kuliah
+# L200150129.github.io

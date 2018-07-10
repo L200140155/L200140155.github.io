@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adding Marker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active">Adding Marker</a></li>
+      <li style="float: right; display: inline-block; color: white; padding: 15px 16px; font-family: Calibri Light; font-size: 12pt; letter-spacing: 2px;">
+        RUMAH AJI
+      </li>
+    </ul>
+
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var myHome = {lat: -7.5757235, lng: 110.8171219};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: myHome
+        });
+
+        var info = '<h3>Alamat Rumah</h3>'+
+            '<p>Kartopuran RT 02/03, Kelurahan Jayengan</br>Kecamatan Serengan, Kota Surakarta.</p>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: info
+        });
+
+        var marker = new google.maps.Marker({
+          position: myHome,
+          map: map,
+          title: "My Home"
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEYenakDOfwmE9EW-iM2azdjHH1hzKjR8&callback=initMap">
+    </script>
+  </body>
+</html>

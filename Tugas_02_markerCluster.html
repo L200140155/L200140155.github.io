@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Marker Clustering</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active">Marker Cluster</a></li>
+      <li style="float: right; display: inline-block; color: white; padding: 15px 16px; font-family: Calibri Light; font-size: 12pt; letter-spacing: 2px;">
+        WISATA DI SOLO
+      </li>
+    </ul>
+    
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          mapTypeId: 'hybrid',
+          center: {lat: -7.1239535, lng: 109.7317319}
+        });
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+      var locations = [
+        {lat: -7.5802008, lng: 110.8176842},
+        {lat: -7.568299, lng: 110.812711},
+        {lat: -7.5680478, lng: 110.8010705},
+        {lat: -7.5542173, lng: 110.8038704},
+        {lat: -7.554175, lng: 110.845842},
+        {lat: -7.564087, lng: 110.858502},
+        {lat: -7.5715318, lng: 110.8242552},
+        {lat: -7.556472, lng: 110.7962744},
+        {lat: -7.5587181, lng: 110.8472913}
+      ]
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEYenakDOfwmE9EW-iM2azdjHH1hzKjR8&callback=initMap">
+    </script>
+  </body>
+</html>
